@@ -155,7 +155,30 @@ class SingleLinkedList:
             pM.link = p1
 
         return startM
+    
+    def merge_sort(self):
+        self.start = self.merge_sort_rec(self.start)
 
+    def _merge_sort_rec(self,list_start):
+        #if list is empty or has one element
+        if list_start is None or list_start.link is None:
+            return list_start
+
+        #if more than one element
+        start1 = list_start
+        start2 = self._divide_list(list_start)
+        start1 = self._merge_sort_rec(start1)
+        start2 = self._merge_sort_rec(start2)
+        startM = self._merge2(star1,start2)
+
+    def _divide_list(self, p):
+        q = p.link.link
+        while q is not None and q.link is not None:
+            p=q.link
+            q=q.link.link
+        start2 = p.link
+        p.link = None
+        return start2
 ############################################################################################
 
 
